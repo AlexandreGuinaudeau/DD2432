@@ -1,16 +1,16 @@
 function evol_error(data_id, hidden_size, n_class_data, epochs, eta, alpha)
 
 if nargin < 4
-    epochs = 20
+    epochs = 20;
 end
 
 if nargin<5
-    eta = 1/(10*n_class_data)
+    eta = 1/(10*n_class_data);
 end
 
 
 if nargin<5
-    alpha = 0.9
+    alpha = 0.9;
 end
 
 if data_id == 1
