@@ -1,4 +1,4 @@
-function run_double_layer(data_id, hidden, ndata, epochs, eta, alpha)
+function a = run_double_layer(data_id, hidden, ndata, epochs, eta, alpha)
 
 %Number of nodes in the hidden layer
 if nargin < 2
@@ -30,5 +30,5 @@ else
 end
 
 a = double_layer(patterns, targets, hidden, epochs, eta, alpha);
-disp(a)
-clear()
+%disp(a)
+%clear()

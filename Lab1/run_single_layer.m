@@ -1,8 +1,8 @@
-function run_single_layer(data_id, ndata, epochs, step_length)
+function a = run_single_layer(data_id, n_class_data, epochs, eta, display)
 
 %Number of data points per class
 if nargin < 2
-    ndata = 100;
+    n_class_data = 100;
 end
 %Number of iterations of the training
 if nargin < 3
@@ -10,16 +10,21 @@ if nargin < 3
 end
 %Definition of the step length
 if nargin < 4
-    step_length = 0.001;
+    eta = 1/(10*n_class_data);
+end
+
+if nargin < 5
+    display = 0;
 end
 
 if data_id == 1
-    [patterns, targets] = sepdata(ndata);
+    [patterns, targets] = sepdata(n_class_data);
 elseif data_id == 2
-    [patterns, targets] = nsepdata(ndata);
+    [patterns, targets] = nsepdata(n_class_data);
 else
     throw(MException('MyComponent:noSuchVariable','Unknown data_id'));
 end
 
-single_layer(patterns, targets, epochs, step_length);
-clear()
+a = single_layer(patterns, targets, epochs, eta, display);
+
+%clear()

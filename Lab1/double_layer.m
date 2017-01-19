@@ -34,5 +34,5 @@ for epoch = 1:epochs
     v = v + dv .* eta;
     
     % compute error
-    error(epoch) = sum(sum(abs(sign(out) - targets)./2));
+    error(epoch) = sum(sum(abs(sign(out) - targets)./2))/ndata;
 end
