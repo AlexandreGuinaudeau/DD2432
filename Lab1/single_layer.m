@@ -1,22 +1,4 @@
-% Initialization of the data points 
-
-%two differents classes of 2d points
-classA(1,:) = [randn(1,50) .* 0.2 - 1.0, ...
-                   randn(1,50) .* 0.2 + 1.0];
-classA(2,:) = randn(1,100) .* 0.2 + 0.3;
-classB(1,:) = randn(1,100) .* 0.3 + 0.0;
-classB(2,:) = randn(1,100) .* 0.3 - 0.1;
-
-%definition of the pattern matrix
-patterns = [classA, classB];
-
-%defintion of the target matrix
-targets = [ones(1,100),-ones(1,100)];
-
-%Permutation of the two matrices
-permute = randperm(200);
-patterns = patterns(:, permute);
-targets = targets(:, permute);
+function single_layer(patterns, targets)
 
 %Visualization of the data points 
 figure(1)
@@ -29,14 +11,15 @@ plot (patterns(1, find(targets>0)), ...
 epochs = 20;
 %Definition of the step length
 step_length = 0.001;
-%Initialization of the coefficient matrix
-W = randn(1,3).*0.5;
-X (1:2,:) = patterns;
-X (3,:) = ones(1,200);
-T = targets;
 
+%Initialization of the coefficient matrix
 [insize, ndata] = size(patterns);
 [outsize, ndata] = size(targets);
+
+W = randn(outsize,insize+1).*0.5;
+X (1:insize,:) = patterns;
+X (insize+1,:) = ones(1,ndata);
+T = targets;
 
 %Training
 for i = 1:epochs
@@ -54,5 +37,4 @@ for i = 1:epochs
           [p(2), p(2)]*k + [p(1), -p(1)]/l, '-');
       drawnow;
       pause(0.1)
-
 end
