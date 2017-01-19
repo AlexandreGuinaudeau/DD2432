@@ -1,5 +1,6 @@
 function a = run_double_layer(data_id, hidden, ndata, epochs, eta, alpha)
 
+
 %Number of nodes in the hidden layer
 if nargin < 2
     hidden = 20;
