@@ -1,4 +1,4 @@
-function single_layer(patterns, targets)
+function single_layer(patterns, targets, epochs, step_length)
 
 %Visualization of the data points 
 figure(1)
@@ -7,11 +7,6 @@ plot (patterns(1, find(targets>0)), ...
           patterns(1, find(targets<0)), ...
           patterns(2, find(targets<0)), '+');
       
-%Number of iterations of the training
-epochs = 20;
-%Definition of the step length
-step_length = 0.001;
-
 %Initialization of the coefficient matrix
 [insize, ndata] = size(patterns);
 [outsize, ndata] = size(targets);
