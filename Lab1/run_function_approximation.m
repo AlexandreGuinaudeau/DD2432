@@ -26,12 +26,12 @@ if nargin < 6
 end
 %Definition of the step length
 if nargin < 7
-    display = 0;
+    display = 1;
 end
 
 [patterns, targets] = approximated_function(ndata, max_x, display);
 
-a = double_layer(patterns, targets, hidden, epochs, eta, alpha);
+a = double_layer(patterns, targets, hidden, epochs, eta, alpha, max_x);
 
 
 

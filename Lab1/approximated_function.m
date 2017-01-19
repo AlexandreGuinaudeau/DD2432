@@ -1,4 +1,4 @@
-function [targets, patterns] = approximated_function(ndata, max_x, display)
+function [patterns, targets] = approximated_function(ndata, max_x, display)
 
 % Force ndata to be a square value
 gridsize = floor(sqrt(ndata));
@@ -11,7 +11,10 @@ y = x;
 z = exp(-x.*x*0.1) * exp(-y.*y*0.1)' - 0.5;
 
 if display
+    figure('Position', [50, 50, 500, 500]);
     mesh(x, y, z)
+    figure('Position', [600, 50, 500, 500]);
+    pause(0.5)
 end
 
 % Convert to 1-D arrays
