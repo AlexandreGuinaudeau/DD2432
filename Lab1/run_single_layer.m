@@ -1,4 +1,4 @@
-function run(data_id, epochs, step_length)
+function run_single_layer(data_id, epochs, step_length)
 
 %Number of iterations of the training
 if nargin < 2
