@@ -36,3 +36,4 @@ for epoch = 1:epochs
     % compute error
     error(epoch) = sum(sum(abs(sign(out) - targets)./2))/ndata;
 end
+sign(w)
