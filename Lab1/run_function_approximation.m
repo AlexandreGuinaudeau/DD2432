@@ -1,4 +1,4 @@
-function run_function_approximation(generalization, hidden, ndata, epochs, max_x, eta, alpha)
+function run_function_approximation(generalization, hidden, ndata, epochs, max_x, eta, alpha, filename)
 
 %Number of nodes in the hidden layer
 if nargin < 1
@@ -28,12 +28,16 @@ end
 if nargin < 7
     alpha = 0.9;
 end
+%Definition of the file name
+if nargin < 8
+    filename = 'test.gif';
+end
 % Display if not generalizing (n=0)
 display = generalization == 0;
 
 [patterns, targets] = approximated_function(ndata, max_x, display);
 
-[train_error, test_error] = double_layer(patterns, targets, hidden, epochs, eta, alpha, max_x, generalization);
+[train_error, test_error] = double_layer(patterns, targets, hidden, epochs, eta, alpha, max_x, generalization, filename);
 
 if generalization > 0
     plot_errors(train_error, test_error);

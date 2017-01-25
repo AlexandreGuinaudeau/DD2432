@@ -1,5 +1,5 @@
 function [train_error, test_error] = double_layer(patterns, targets, hidden, epochs, eta, ...
-    alpha, max_x, n)
+    alpha, max_x, n, filename)
 
 % max_x is only defined for the last application
 if nargin < 7
@@ -8,6 +8,10 @@ end
 if nargin < 8
     n = 0;
 end
+if nargin < 9
+    filename='test.gif';
+end
+filename = strcat('figures/', filename);
 % n is the amount of data in the training set
 [~, ndata] = size(patterns);
 if n==0
@@ -86,6 +90,16 @@ for epoch = 1:epochs
     train_error(epoch) = epoch_error;
     if n_test > 0
         test_error(epoch) = epoch_error_test;
+    else
+        % Save as gif
+        frame = getframe(2);
+        im = frame2im(frame);
+        [imind,cm] = rgb2ind(im,256);
+        if epoch == 1;
+            imwrite(imind,cm,filename,'gif', 'Loopcount',inf,'DelayTime',0.1);
+        else
+            imwrite(imind,cm,filename,'gif','WriteMode','append','DelayTime',0.1);
+        end
     end
 end
 
