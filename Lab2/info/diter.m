@@ -5,7 +5,7 @@
 clf
 hold on
 
-Phi=calcPhi(x,m,var);
+Phi=calcPhi(x,m,v);
 f=feval(fun,x);
 y=x;
 alg='Stochastic';
@@ -18,7 +18,7 @@ while iter<iterstop
   while iter<substop
     iter=iter+1;
     rx=fmin + (fmax-fmin)*rand;
-    rphi=gauss(rx,m,var);
+    rphi=gauss(rx,m,v);
     ry=rphi'*w;
     err=feval(fun,rx)-ry;
     w=w+eta*err*rphi;
