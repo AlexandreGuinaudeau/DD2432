@@ -23,6 +23,7 @@ end
 % Run makerbf script
 makerbf
 Phi = calcPhi(x, m, v);
+disp(m)
 w = Phi\f;
 y = Phi * w;
 if use_sign
@@ -47,7 +48,7 @@ if residual_target > 0
         end
     end
 end
-rbfplot1(x, y, f, units);
+rbfplot1(x, y, f, units, m);
 
 end
 

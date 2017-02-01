@@ -14,7 +14,7 @@ if custom_itermax > 0
     itermax = custom_itermax;
 end
 if custom_itersub > 0
-    itersub = custom_sub_iter;
+    itersub = custom_itersub;
 end
 diter
 

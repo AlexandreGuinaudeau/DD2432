@@ -29,11 +29,16 @@ while iter<iterstop
 y=Phi*w;
 
 subplot(3,1,1); plot(iterstart+1:itersub:iterstop,log(psum));
-title(['RBF-units=' int2str(units) ', ' alg ': log(error vs iter)']);
+title(['RBF-units=' int2str(units) ', ' alg ': log(error) vs iter']);
 subplot(3,1,2); plot(x,y,x,f);title('Function y and desired y');
 subplot(3,1,3); plot(x,f-y);
 title(['Residual, max= ' num2str(max(abs(f-y)))]);
 pause(0);
+
+if max(abs(f-y)) < 0.01
+    disp(['Residual error reached 0.01 after ' int2str(iter) ' iterations']);
+  break
+end
 
 end
 iter=iterstop
@@ -41,7 +46,7 @@ iter=iterstop
 y=Phi*w;
 
 subplot(3,1,1); plot(iterstart+1:itersub:iterstop,log(psum));
-title(['RBF-units=' int2str(units) ', ' alg ': log(error vs iter)']);
+title(['RBF-units=' int2str(units) ', ' alg ': log(error) vs iter']);
 subplot(3,1,2); plot(x,y,x,f);title('Function y and desired y');
 subplot(3,1,3); plot(x,f-y);
 title(['Residual, max= ' num2str(max(abs(f-y)))]);
