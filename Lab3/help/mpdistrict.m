@@ -1,4 +1,4 @@
-mpdistrict = [1
+district = [1
 	      1
 	      1
 	      1
