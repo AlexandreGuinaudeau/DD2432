@@ -20,7 +20,7 @@ function cyclic_tour(eta, niter, pause_time, filename)
     while neighborhood >= 0
         for t = 1 : niter
             %shuffle = randperm(n_cities);
-            for i = 1 : n_cities
+            for i = 1 : 10
                 % Find winner 
                 c = city(i, :);
                 distances = [w(:, 1) - c(1) w(:, 2) - c(2)];
